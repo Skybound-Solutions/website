@@ -51,35 +51,79 @@ const ProjectPage = () => {
   };
 
   if (!project) {
-    return <div>Loading...</div>;
+    return (
+      <div className="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+        <div>Loading...</div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1>{project.name}</h1>
-      <p>{project.description}</p>
-      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-        View on GitHub
-      </a>
+    <div className="bg-gray-900 text-white min-h-screen flex">
+      <aside className="w-64 bg-gray-800 p-6 border-r border-gray-700">
+        <h1 className="text-2xl font-bold mb-8">Project Manager</h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="/dashboard" className="block py-2 px-4 rounded hover:bg-gray-700">
+                Projects
+              </a>
+            </li>
+            {/* Add more navigation links here */}
+          </ul>
+        </nav>
+      </aside>
 
-      <h2>Invoices</h2>
-      <form onSubmit={handleAddInvoice}>
-        <input
-          type="text"
-          value={newInvoiceTitle}
-          onChange={(e) => setNewInvoiceTitle(e.target.value)}
-          placeholder="New Invoice Title"
-        />
-        <button type="submit">Add Invoice</button>
-      </form>
+      <main className="flex-1 p-10">
+        <header className="flex justify-between items-center mb-10">
+          <h2 className="text-3xl font-bold">{project.name}</h2>
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition"
+          >
+            View on GitHub
+          </a>
+        </header>
 
-      <ul>
-        {invoices.map((invoice) => (
-          <li key={invoice.id}>
-            {invoice.title} - {invoice.status}
-          </li>
-        ))}
-      </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-bold mb-4">Project Description</h3>
+            <p>{project.description}</p>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-bold mb-4">Invoices</h3>
+            <form onSubmit={handleAddInvoice} className="mb-6">
+              <div className="flex gap-4">
+                <input
+                  type="text"
+                  value={newInvoiceTitle}
+                  onChange={(e) => setNewInvoiceTitle(e.target.value)}
+                  placeholder="New Invoice Title"
+                  className="flex-grow bg-gray-700 border border-gray-600 rounded-md py-2 px-3"
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition"
+                >
+                  Add Invoice
+                </button>
+              </div>
+            </form>
+
+            <ul>
+              {invoices.map((invoice) => (
+                <li key={invoice.id} className="border-b border-gray-700 py-2">
+                  <span>{invoice.title}</span>
+                  <span className="ml-4 text-gray-400">{invoice.status}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

@@ -21,7 +21,12 @@ const Login = () => {
 
   return (
     <div>
-      <button onClick={handleSignIn}>Sign in with Google</button>
+      <button
+        onClick={handleSignIn}
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition"
+      >
+        Sign in with Google
+      </button>
     </div>
   );
 };

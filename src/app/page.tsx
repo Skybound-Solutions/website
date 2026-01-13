@@ -1,111 +1,31 @@
-import { CSSProperties } from 'react';
-
-const styles: { [key: string]: CSSProperties } = {
-  hero: {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundImage: `linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.85)), url('/hero-bg.png')`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-    paddingTop: 'var(--header-height)',
-  },
-  heroContent: {
-    position: 'relative',
-    zIndex: 2,
-    textAlign: 'center',
-    maxWidth: '800px',
-  },
-  heroTitle: {
-    fontSize: '4rem',
-    fontWeight: '800',
-    marginBottom: '1.5rem',
-    lineHeight: 1.1,
-    color: '#fff',
-    letterSpacing: '-0.02em',
-  },
-  heroSubtitle: {
-    fontSize: '1.25rem',
-    color: 'var(--secondary)',
-    marginBottom: '2.5rem',
-    lineHeight: 1.6,
-    maxWidth: '600px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  glow: {
-    position: 'absolute',
-    width: '600px',
-    height: '600px',
-    background: 'radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(0,0,0,0) 70%)',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    zIndex: 1,
-    pointerEvents: 'none',
-  },
-  serviceCard: {
-    background: 'var(--surface)',
-    padding: '2.5rem',
-    borderRadius: '16px',
-    border: '1px solid rgba(255,255,255,0.05)',
-    transition: 'all 0.3s ease',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  cardIcon: {
-    marginBottom: '1.5rem',
-    color: 'var(--accent)',
-    fontSize: '2rem',
-  },
-  cardTitle: {
-    fontSize: '1.5rem',
-    marginBottom: '1rem',
-    color: '#fff',
-    fontWeight: '700',
-  },
-  cardText: {
-    color: 'var(--secondary)',
-    fontSize: '1rem',
-    lineHeight: 1.6,
-  }
-};
-
 export default function Home() {
   return (
-    <div>
+    <div className="bg-gray-900 text-white">
       {/* Hero Section */}
-      <section style={styles.hero}>
-        <div style={styles.glow} />
-        <div className="container" style={styles.heroContent}>
-          <div style={{
-            display: 'inline-block',
-            padding: '4px 12px',
-            borderRadius: '99px',
-            background: 'rgba(56, 189, 248, 0.1)',
-            border: '1px solid rgba(56, 189, 248, 0.2)',
-            color: 'var(--primary)',
-            fontSize: '0.85rem',
-            fontWeight: '600',
-            marginBottom: '1.5rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em'
-          }}>
+      <section
+        className="min-h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(11, 17, 32, 0.7), rgba(11, 17, 32, 0.85)), url('/hero-bg.png')`,
+        }}
+      >
+        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-radial-glow -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="container relative z-10 text-center max-w-4xl">
+          <div className="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold mb-6 uppercase tracking-wider">
             AI Solutions & Consulting
           </div>
-          <h1 style={styles.heroTitle}>
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
             Piloting the Future of<br />
-            <span style={{ color: 'var(--primary)' }}>Business Intelligence</span>
+            <span className="text-blue-400">Business Intelligence</span>
           </h1>
-          <p style={styles.heroSubtitle}>
+          <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
             Custom AI tools and consulting services designed to elevate your business.
             We build intelligent automation solutions tailored to your unique workflows
             and help you navigate the evolving landscape of AI technology.
           </p>
-          <a href="/login" className="btn btn-primary">
+          <a
+            href="/login"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
+          >
             Admin Portal
           </a>
         </div>
