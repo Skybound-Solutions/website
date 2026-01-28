@@ -1,4 +1,6 @@
-import { CSSProperties } from 'react';
+'use client';
+
+import { CSSProperties, useState, FormEvent } from 'react';
 
 const styles: { [key: string]: CSSProperties } = {
   hero: {
@@ -71,10 +73,101 @@ const styles: { [key: string]: CSSProperties } = {
     color: 'var(--secondary)',
     fontSize: '1rem',
     lineHeight: 1.6,
+  },
+  formContainer: {
+    background: 'var(--surface)',
+    padding: '2.5rem',
+    borderRadius: '16px',
+    border: '1px solid rgba(255,255,255,0.05)',
+    textAlign: 'left',
+    marginTop: '3rem',
+  },
+  inputGroup: {
+    marginBottom: '1.5rem',
+  },
+  label: {
+    display: 'block',
+    marginBottom: '0.5rem',
+    color: '#fff',
+    fontSize: '0.9rem',
+    fontWeight: '500',
+  },
+  input: {
+    width: '100%',
+    padding: '12px 16px',
+    background: 'var(--background)',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: '8px',
+    color: '#fff',
+    fontSize: '1rem',
+    outline: 'none',
+    transition: 'border-color 0.2s ease',
+  },
+  textarea: {
+    width: '100%',
+    padding: '12px 16px',
+    background: 'var(--background)',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: '8px',
+    color: '#fff',
+    fontSize: '1rem',
+    outline: 'none',
+    minHeight: '120px',
+    resize: 'vertical',
+    transition: 'border-color 0.2s ease',
   }
 };
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    const webhookUrl = 'https://discord.com/api/webhooks/1466112794997817487/DxbXqKYHyQYKrKCJfbN1RfuUe1p8SVIOQ7heIIz964R8ntoftvExzKhFvGnZUL3-JNzC';
+
+    const embed = {
+      title: 'New Contact Form Submission',
+      color: 0x38bdf8,
+      fields: [
+        { name: 'Name', value: formData.name || 'N/A', inline: true },
+        { name: 'Email', value: formData.email || 'N/A', inline: true },
+        { name: 'Subject', value: formData.subject || 'N/A' },
+        { name: 'Message', value: formData.message || 'N/A' }
+      ],
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          embeds: [embed]
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Webhook error:', error);
+      setStatus('error');
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -207,20 +300,97 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="section">
-        <div className="container" style={{ textAlign: 'center', maxWidth: '600px', position: 'relative', zIndex: 1 }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '700px', position: 'relative', zIndex: 1 }}>
           <h2 className="title" style={{ marginBottom: '1.5rem', fontSize: '2.5rem' }}>Ready for Takeoff?</h2>
-          <p style={{ ...styles.cardText, marginBottom: '2.5rem' }}>
+          <p style={{ ...styles.cardText, marginBottom: '2rem' }}>
             Let's discuss how custom AI solutions can transform your business.
             Get in touch to explore your project and chart the best path forward.
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-            <a href="mailto:info@skyboundmi.com" className="btn btn-primary" style={{ minWidth: '200px' }}>
-              Contact Us
-            </a>
-            <div style={{ color: 'var(--secondary)', fontSize: '0.9rem', marginTop: '2rem' }}>
-              <strong>Location:</strong> Michigan, USA
-            </div>
+          <div style={styles.formContainer}>
+            {status === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '2rem' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+                <h3 style={{ color: '#fff', marginBottom: '0.5rem' }}>Message Sent!</h3>
+                <p style={styles.cardText}>We've received your inquiry and will get back to you soon.</p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="btn btn-primary"
+                  style={{ marginTop: '1.5rem' }}
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="grid grid-2" style={{ gap: '1rem' }}>
+                  <div style={styles.inputGroup}>
+                    <label style={styles.label}>Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      style={styles.input}
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                  <div style={styles.inputGroup}>
+                    <label style={styles.label}>Email Address</label>
+                    <input
+                      type="email"
+                      required
+                      style={styles.input}
+                      placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div style={styles.inputGroup}>
+                  <label style={styles.label}>Subject</label>
+                  <input
+                    type="text"
+                    required
+                    style={styles.input}
+                    placeholder="Potential Project Inquiry"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  />
+                </div>
+
+                <div style={styles.inputGroup}>
+                  <label style={styles.label}>Message</label>
+                  <textarea
+                    required
+                    style={styles.textarea}
+                    placeholder="Tell us about your needs..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: '100%', marginTop: '0.5rem' }}
+                  disabled={status === 'sending'}
+                >
+                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                </button>
+
+                {status === 'error' && (
+                  <p style={{ color: '#ff4444', textAlign: 'center', marginTop: '1rem', fontSize: '0.9rem' }}>
+                    Oops! Something went wrong. Please try again or email us directly.
+                  </p>
+                )}
+              </form>
+            )}
+          </div>
+
+          <div style={{ color: 'var(--secondary)', fontSize: '0.9rem', marginTop: '3rem' }}>
+            <strong>Location:</strong> Michigan, USA • <strong>Email:</strong> info@skyboundmi.com
           </div>
         </div>
       </section>
