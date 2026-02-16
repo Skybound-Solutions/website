@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata } from 'next';
+import AuroraBackground from '@/components/AuroraBackground';
 
 export const metadata: Metadata = {
     title: 'About | Skybound Solutions',
@@ -40,28 +40,9 @@ export default function AboutPage() {
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
             {/* Header */}
-            <section className="section" style={{ paddingBottom: 40 }}>
-                <div className="container" style={{ textAlign: 'center', maxWidth: 800 }}>
-                    <div style={{ marginBottom: 24, position: 'relative', display: 'inline-block' }}>
-                        <div
-                            style={{
-                                position: 'absolute',
-                                inset: -60,
-                                background: 'radial-gradient(circle, rgba(0,212,170,0.18) 0%, rgba(0,122,255,0.08) 40%, transparent 70%)',
-                                borderRadius: '50%',
-                                filter: 'blur(40px)',
-                                pointerEvents: 'none',
-                            }}
-                        />
-                        <Image
-                            src="/brand/logo-icon-dark.png"
-                            alt="Skybound Solutions"
-                            width={280}
-                            height={280}
-                            className="logo-hero"
-                            style={{ position: 'relative', width: 140, height: 140 }}
-                        />
-                    </div>
+            <section className="section" style={{ paddingBottom: 40, position: 'relative', overflow: 'hidden' }}>
+                <AuroraBackground variant="page" />
+                <div className="container" style={{ textAlign: 'center', maxWidth: 800, position: 'relative', zIndex: 1 }}>
                     <div className="section-label">About Us</div>
                     <h1 className="heading-xl" style={{ marginBottom: 16 }}>
                         Where Experience Meets{' '}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import AuroraBackground from '@/components/AuroraBackground';
 
 export const metadata: Metadata = {
     title: 'Services | Skybound Solutions',
@@ -100,8 +101,9 @@ export default function ServicesPage() {
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
             {/* Header */}
-            <section className="section" style={{ paddingBottom: 40 }}>
-                <div className="container" style={{ textAlign: 'center', maxWidth: 800 }}>
+            <section className="section" style={{ paddingBottom: 40, position: 'relative', overflow: 'hidden' }}>
+                <AuroraBackground variant="page" />
+                <div className="container" style={{ textAlign: 'center', maxWidth: 800, position: 'relative', zIndex: 1 }}>
                     <div className="section-label">Services</div>
                     <h1 className="heading-xl" style={{ marginBottom: 16 }}>
                         AI Solutions That{' '}

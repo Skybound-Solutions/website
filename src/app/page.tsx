@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import AuroraBackground from '@/components/AuroraBackground';
 
 const services = [
   {
@@ -90,18 +91,7 @@ export default function Home() {
           paddingTop: 'var(--header-height)',
         }}
       >
-        <div
-          className="aurora-glow aurora-glow-blue"
-          style={{ top: '-15%', right: '-5%', width: 700, height: 700, opacity: 0.5, animation: 'aurora-drift-1 20s ease-in-out infinite' }}
-        />
-        <div
-          className="aurora-glow aurora-glow-teal"
-          style={{ bottom: '-15%', left: '-10%', width: 600, height: 600, opacity: 0.35, animation: 'aurora-drift-2 25s ease-in-out infinite' }}
-        />
-        <div
-          className="aurora-glow aurora-glow-purple"
-          style={{ top: '20%', left: '15%', width: 500, height: 500, opacity: 0.25, animation: 'aurora-drift-3 18s ease-in-out infinite' }}
-        />
+        <AuroraBackground variant="hero" />
 
         <div
           className="container"

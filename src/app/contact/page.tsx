@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import AuroraBackground from '@/components/AuroraBackground';
 import type { Metadata } from 'next';
 
 const budgetRanges = [
@@ -65,8 +66,9 @@ export default function ContactPage() {
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
             {/* Header */}
-            <section className="section" style={{ paddingBottom: 32 }}>
-                <div className="container" style={{ textAlign: 'center', maxWidth: 700 }}>
+            <section className="section" style={{ paddingBottom: 32, position: 'relative', overflow: 'hidden' }}>
+                <AuroraBackground variant="page" />
+                <div className="container" style={{ textAlign: 'center', maxWidth: 700, position: 'relative', zIndex: 1 }}>
                     <div className="section-label">Get In Touch</div>
                     <h1 className="heading-xl" style={{ marginBottom: 16 }}>
                         Book a{' '}
