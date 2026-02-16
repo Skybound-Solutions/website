@@ -49,6 +49,35 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Skybound Solutions, LLC',
+              description: 'AI consulting, custom development, and workflow automation for businesses.',
+              url: 'https://skyboundmi.com',
+              telephone: '+1-810-378-0620',
+              email: 'info@skyboundmi.com',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Peck',
+                addressRegion: 'MI',
+                postalCode: '48466',
+                addressCountry: 'US',
+              },
+              priceRange: '$$-$$$$',
+              areaServed: 'US',
+              serviceType: ['AI Consulting', 'Custom Software Development', 'Workflow Automation'],
+              founder: {
+                '@type': 'Person',
+                name: 'Brian Anklam',
+                jobTitle: 'Founder & Chief Architect',
+              },
+            }),
+          }}
+        />
         <Navbar />
         <main>{children}</main>
         <Footer />

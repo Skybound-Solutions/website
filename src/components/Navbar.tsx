@@ -26,7 +26,7 @@ export default function Navbar() {
     const navLinks = [
         { href: '/', label: 'Home' },
         { href: '/services', label: 'Services' },
-        { href: '/portfolio', label: 'Portfolio' },
+        { href: '/work', label: 'Work' },
         { href: '/about', label: 'About' },
         { href: '/blog', label: 'Blog' },
         { href: '/contact', label: 'Contact' },
@@ -73,7 +73,7 @@ export default function Navbar() {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '2rem',
+                        gap: '1.75rem',
                     }}
                     className="nav-desktop"
                 >
@@ -92,12 +92,10 @@ export default function Navbar() {
                         </Link>
                     ))}
                     <Link
-                        href="https://portal.skyboundmi.com"
+                        href="/contact"
                         className="btn btn-primary btn-sm"
-                        target="_blank"
-                        rel="noopener noreferrer"
                     >
-                        Client Portal
+                        Book a Call
                     </Link>
                 </div>
 
@@ -183,13 +181,11 @@ export default function Navbar() {
                     </Link>
                 ))}
                 <Link
-                    href="https://portal.skyboundmi.com"
+                    href="/contact"
                     className="btn btn-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                 >
-                    Client Portal
+                    Book a Call
                 </Link>
             </div>
 

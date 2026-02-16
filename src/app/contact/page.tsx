@@ -1,235 +1,282 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import type { Metadata } from 'next';
 
-export default function ContactPage() {
-    const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
-    const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+const budgetRanges = [
+    'Under $5,000',
+    '$5,000 – $15,000',
+    '$15,000 – $30,000',
+    '$30,000 – $50,000',
+    '$50,000+',
+    'Not sure yet',
+    'Monthly retainer',
+];
 
-    const handleSubmit = async (e: FormEvent) => {
+export default function ContactPage() {
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        company: '',
+        budget: '',
+        message: '',
+    });
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('sending');
-
         try {
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),
             });
-
-            if (res.ok) {
-                setStatus('sent');
-                setForm({ name: '', email: '', company: '', message: '' });
-            } else {
-                setStatus('error');
-            }
+            setStatus(res.ok ? 'success' : 'error');
         } catch {
             setStatus('error');
         }
     };
 
+    if (status === 'success') {
+        return (
+            <div style={{ paddingTop: 'var(--header-height)' }}>
+                <section
+                    className="section"
+                    style={{
+                        minHeight: '60vh',
+                        display: 'flex',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                    }}
+                >
+                    <div className="container" style={{ maxWidth: 500 }}>
+                        <div style={{ fontSize: '3rem', marginBottom: 16 }}>✅</div>
+                        <h1 className="heading-lg" style={{ marginBottom: 12 }}>Message Sent</h1>
+                        <p className="text-lg">
+                            We&apos;ll get back to you within 1 business day. Looking forward to learning about your project.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        );
+    }
+
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
             {/* Header */}
-            <section className="section" style={{ paddingBottom: 40 }}>
+            <section className="section" style={{ paddingBottom: 32 }}>
                 <div className="container" style={{ textAlign: 'center', maxWidth: 700 }}>
-                    <div className="section-label">Contact</div>
+                    <div className="section-label">Get In Touch</div>
                     <h1 className="heading-xl" style={{ marginBottom: 16 }}>
-                        Let&apos;s <span className="text-gradient">Talk</span>
+                        Book a{' '}
+                        <span className="text-gradient">Discovery Call</span>
                     </h1>
                     <p className="text-lg">
-                        Every project starts with a conversation. Tell us about what you&apos;re building
-                        and we&apos;ll show you what&apos;s possible.
+                        Every project starts with a free 15-minute call. Tell us what you&apos;re building and we&apos;ll show you what&apos;s possible.
                     </p>
                 </div>
             </section>
 
-            {/* Form + Info */}
-            <section className="section section-dark" style={{ paddingTop: 40 }}>
-                <div className="container">
+            <section className="section section-dark" style={{ paddingTop: 20 }}>
+                <div className="container" style={{ maxWidth: 1100 }}>
                     <div
                         style={{
                             display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
                             gap: '3rem',
-                            maxWidth: 1000,
-                            margin: '0 auto',
                         }}
                     >
-                        {/* Contact Form */}
-                        <div className="card card-glass" style={{ padding: '2.5rem' }}>
-                            <h2 className="heading-md" style={{ marginBottom: 24 }}>
-                                Send a Message
-                            </h2>
+                        {/* Booking Widget Placeholder + Form */}
+                        <div>
+                            {/* Booking Widget — swap out for Cal.com/Calendly embed later */}
+                            <div
+                                className="card card-glass"
+                                style={{
+                                    padding: '2rem',
+                                    marginBottom: '2rem',
+                                    textAlign: 'center',
+                                    background: 'rgba(0, 122, 255, 0.05)',
+                                    border: '1px solid rgba(0, 122, 255, 0.15)',
+                                }}
+                            >
+                                <h3 className="heading-sm" style={{ marginBottom: 8 }}>📅 Schedule Directly</h3>
+                                <p className="text-sm" style={{ marginBottom: 16 }}>
+                                    Prefer to skip the form? Book a free 15-minute discovery call directly.
+                                </p>
+                                <a
+                                    href="mailto:info@skyboundmi.com?subject=Discovery%20Call%20Request"
+                                    className="btn btn-primary btn-sm"
+                                >
+                                    Request a Time →
+                                </a>
+                                <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 8 }}>
+                                    Scheduling widget coming soon — for now, email us with your preferred time.
+                                </p>
+                            </div>
 
-                            {status === 'sent' ? (
-                                <div
-                                    style={{
-                                        textAlign: 'center',
-                                        padding: '3rem 1rem',
-                                    }}
-                                >
-                                    <div style={{ fontSize: '3rem', marginBottom: 16 }}>✓</div>
-                                    <h3 className="heading-md" style={{ marginBottom: 8 }}>
-                                        Message Sent!
-                                    </h3>
-                                    <p className="text-base">
-                                        Thanks for reaching out. We&apos;ll get back to you within 24 hours.
-                                    </p>
-                                </div>
-                            ) : (
-                                <form
-                                    onSubmit={handleSubmit}
-                                    style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
-                                >
+                            {/* Contact Form */}
+                            <form onSubmit={handleSubmit}>
+                                <h3 className="heading-sm" style={{ marginBottom: 16 }}>Or send us a message</h3>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                                     <div>
-                                        <label className="label" htmlFor="name">Name</label>
+                                        <label style={{ color: '#94a3b8', fontSize: '0.85rem', display: 'block', marginBottom: 6 }}>
+                                            Name *
+                                        </label>
                                         <input
-                                            id="name"
-                                            className="input"
                                             type="text"
                                             required
-                                            placeholder="Your name"
                                             value={form.name}
                                             onChange={(e) => setForm({ ...form, name: e.target.value })}
+                                            className="input"
+                                            placeholder="Your name"
                                         />
                                     </div>
-
                                     <div>
-                                        <label className="label" htmlFor="email">Email</label>
+                                        <label style={{ color: '#94a3b8', fontSize: '0.85rem', display: 'block', marginBottom: 6 }}>
+                                            Email *
+                                        </label>
                                         <input
-                                            id="email"
-                                            className="input"
                                             type="email"
                                             required
-                                            placeholder="you@company.com"
                                             value={form.email}
                                             onChange={(e) => setForm({ ...form, email: e.target.value })}
+                                            className="input"
+                                            placeholder="you@company.com"
                                         />
                                     </div>
-
                                     <div>
-                                        <label className="label" htmlFor="company">Company (optional)</label>
+                                        <label style={{ color: '#94a3b8', fontSize: '0.85rem', display: 'block', marginBottom: 6 }}>
+                                            Company
+                                        </label>
                                         <input
-                                            id="company"
-                                            className="input"
                                             type="text"
-                                            placeholder="Your company"
                                             value={form.company}
                                             onChange={(e) => setForm({ ...form, company: e.target.value })}
+                                            className="input"
+                                            placeholder="Company name (optional)"
                                         />
                                     </div>
-
                                     <div>
-                                        <label className="label" htmlFor="message">Message</label>
+                                        <label style={{ color: '#94a3b8', fontSize: '0.85rem', display: 'block', marginBottom: 6 }}>
+                                            Budget Range
+                                        </label>
+                                        <select
+                                            value={form.budget}
+                                            onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                                            className="input"
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            <option value="">Select a range (optional)</option>
+                                            {budgetRanges.map((r) => (
+                                                <option key={r} value={r}>{r}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style={{ color: '#94a3b8', fontSize: '0.85rem', display: 'block', marginBottom: 6 }}>
+                                            Tell us about your project *
+                                        </label>
                                         <textarea
-                                            id="message"
-                                            className="textarea"
                                             required
-                                            placeholder="Tell us about your project or question..."
+                                            rows={5}
                                             value={form.message}
                                             onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                            className="input"
+                                            placeholder="What are you building? What problem are you trying to solve?"
                                         />
                                     </div>
-
-                                    {status === 'error' && (
-                                        <p style={{ color: 'var(--bright-orange)', fontSize: '0.9rem' }}>
-                                            Something went wrong. Please try again or email us directly.
-                                        </p>
-                                    )}
-
                                     <button
                                         type="submit"
-                                        className="btn btn-primary"
+                                        className="btn btn-teal btn-lg"
                                         disabled={status === 'sending'}
-                                        style={{ width: '100%', opacity: status === 'sending' ? 0.7 : 1 }}
+                                        style={{ width: '100%' }}
                                     >
                                         {status === 'sending' ? 'Sending...' : 'Send Message'}
                                     </button>
-                                </form>
-                            )}
+                                    {status === 'error' && (
+                                        <p style={{ color: '#ef4444', fontSize: '0.85rem' }}>
+                                            Something went wrong. Please try again or email us directly.
+                                        </p>
+                                    )}
+                                </div>
+                            </form>
                         </div>
 
-                        {/* Contact Info */}
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 32, paddingTop: 8 }}>
-                            <div>
-                                <h3 className="heading-sm" style={{ marginBottom: 8 }}>
-                                    Email Us
-                                </h3>
-                                <a
-                                    href="mailto:info@skyboundmi.com"
-                                    style={{ color: 'var(--sky-blue)', fontSize: '1.1rem' }}
-                                >
-                                    info@skyboundmi.com
-                                </a>
-                            </div>
+                        {/* Sidebar */}
+                        <div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+                                <div className="card card-glass" style={{ padding: '2rem' }}>
+                                    <h3 className="heading-sm" style={{ marginBottom: 16 }}>Contact Info</h3>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                                        <div>
+                                            <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: 4 }}>📞 Phone</p>
+                                            <a href="tel:+18103780620" style={{ color: '#e2e8f0', fontWeight: 500 }}>
+                                                (810) 378-0620
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: 4 }}>✉️ Email</p>
+                                            <a href="mailto:info@skyboundmi.com" style={{ color: '#e2e8f0', fontWeight: 500 }}>
+                                                info@skyboundmi.com
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: 4 }}>📍 Location</p>
+                                            <p style={{ color: '#e2e8f0', fontWeight: 500 }}>
+                                                Peck, Michigan — serving clients nationwide
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: 4 }}>⏱️ Response Time</p>
+                                            <p style={{ color: '#e2e8f0', fontWeight: 500 }}>Within 1 business day</p>
+                                        </div>
+                                        <div>
+                                            <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: 4 }}>🔗 Social</p>
+                                            <a
+                                                href="https://linkedin.com/company/skybound-solutions-llc"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{ color: 'var(--sky-blue)', fontWeight: 500 }}
+                                            >
+                                                LinkedIn ↗
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div>
-                                <h3 className="heading-sm" style={{ marginBottom: 8 }}>
-                                    Location
-                                </h3>
-                                <p className="text-base">Michigan, USA</p>
-                                <p className="text-sm" style={{ marginTop: 4 }}>
-                                    We work with clients nationwide and remotely.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h3 className="heading-sm" style={{ marginBottom: 8 }}>
-                                    Response Time
-                                </h3>
-                                <p className="text-base">
-                                    We typically respond within 24 hours on business days.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h3 className="heading-sm" style={{ marginBottom: 8 }}>
-                                    Connect
-                                </h3>
-                                <div style={{ display: 'flex', gap: 12 }}>
-                                    <a
-                                        href="https://linkedin.com/company/skybound-solutions-llc"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-secondary btn-sm"
-                                    >
-                                        LinkedIn ↗
-                                    </a>
+                                <div className="card card-glass" style={{ padding: '2rem' }}>
+                                    <h3 className="heading-sm" style={{ marginBottom: 12 }}>Existing Client?</h3>
+                                    <p className="text-sm" style={{ marginBottom: 16 }}>
+                                        Access your project dashboard, invoices, and communication.
+                                    </p>
                                     <a
                                         href="https://portal.skyboundmi.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="btn btn-secondary btn-sm"
+                                        style={{ width: '100%', textAlign: 'center' }}
                                     >
                                         Client Portal ↗
                                     </a>
                                 </div>
-                            </div>
 
-                            <div
-                                style={{
-                                    padding: '1.5rem',
-                                    borderRadius: 12,
-                                    background: 'rgba(0,212,170,0.06)',
-                                    border: '1px solid rgba(0,212,170,0.15)',
-                                }}
-                            >
-                                <h4 style={{ color: 'var(--electric-teal)', fontSize: '0.95rem', fontWeight: 600, marginBottom: 8 }}>
-                                    Existing Client?
-                                </h4>
-                                <p className="text-sm">
-                                    Access your project dashboard, invoices, and communications through the{' '}
-                                    <a
-                                        href="https://portal.skyboundmi.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{ color: 'var(--electric-teal)', textDecoration: 'underline' }}
-                                    >
-                                        Client Portal
-                                    </a>.
-                                </p>
+                                <div
+                                    className="card card-glass"
+                                    style={{
+                                        padding: '1.5rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: 12,
+                                        background: 'rgba(0, 212, 170, 0.05)',
+                                        border: '1px solid rgba(0, 212, 170, 0.15)',
+                                    }}
+                                >
+                                    <span style={{ fontSize: '1.5rem' }}>🛡️</span>
+                                    <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
+                                        <strong style={{ color: 'var(--white)' }}>Fully insured</strong> — $1M E&O and Cyber Liability coverage
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -26,3 +26,11 @@ You are maintaining the public-facing website for Skybound Solutions. Every deci
 
 ## References
 - [Cloudflare DNS Records](https://github.com/Skybound-Solutions/skybound-core/blob/main/wiki/src/content/docs/infrastructure/cloudflare-dns.mdx)
+
+## Cross-Session Context (MANDATORY)
+
+This project uses Conductor for cross-session task management.
+
+- **Conductor**: `./conductor/` — MUST read `conductor/tracks.md` at session start, update before session end.
+- **ROADMAP.md**: `./ROADMAP.md` — Project feature roadmap. Create if missing.
+- **Missing Conductor**: If `conductor/` does not exist, initialize the full standard structure BEFORE starting any feature work.

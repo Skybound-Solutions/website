@@ -8,16 +8,17 @@ export default function Footer() {
         company: [
             { href: '/about', label: 'About' },
             { href: '/services', label: 'Services' },
-            { href: '/portfolio', label: 'Portfolio' },
+            { href: '/work', label: 'Work' },
             { href: '/blog', label: 'Blog' },
         ],
         services: [
             { href: '/services#consulting', label: 'AI Consulting' },
             { href: '/services#development', label: 'Custom Development' },
-            { href: '/services#automation', label: 'Workflow Automation' },
+            { href: '/services#maintenance', label: 'Maintenance & Support' },
+            { href: '/services#partnerships', label: 'Strategic Partnerships' },
         ],
         connect: [
-            { href: '/contact', label: 'Contact Us' },
+            { href: '/contact', label: 'Book a Discovery Call' },
             { href: 'https://portal.skyboundmi.com', label: 'Client Portal', external: true },
             { href: 'https://linkedin.com/company/skybound-solutions-llc', label: 'LinkedIn', external: true },
         ],
@@ -54,17 +55,17 @@ export default function Footer() {
                         <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6 }}>
                             AI-powered consulting and custom development for businesses ready to deploy intelligent solutions.
                         </p>
-                        <p
-                            style={{
-                                color: '#64748b',
-                                fontSize: '0.85rem',
-                                marginTop: 16,
-                            }}
-                        >
-                            📍 Michigan, USA
-                            <br />
-                            ✉️ info@skyboundmi.com
-                        </p>
+                        <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                            <p style={{ color: '#64748b', fontSize: '0.85rem' }}>
+                                📍 Peck, Michigan — serving clients nationwide
+                            </p>
+                            <p style={{ color: '#64748b', fontSize: '0.85rem' }}>
+                                📞 <a href="tel:+18103780620" style={{ color: '#64748b' }}>(810) 378-0620</a>
+                            </p>
+                            <p style={{ color: '#64748b', fontSize: '0.85rem' }}>
+                                ✉️ <a href="mailto:info@skyboundmi.com" style={{ color: '#64748b' }}>info@skyboundmi.com</a>
+                            </p>
+                        </div>
                     </div>
 
                     {/* Company Links */}
@@ -180,9 +181,27 @@ export default function Footer() {
                     <p style={{ color: '#475569', fontSize: '0.8rem' }}>
                         © {currentYear} Skybound Solutions, LLC. All rights reserved.
                     </p>
-                    <p style={{ color: '#475569', fontSize: '0.8rem' }}>
-                        Built with precision. Powered by AI.
-                    </p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                        <span
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 6,
+                                padding: '4px 10px',
+                                borderRadius: 6,
+                                background: 'rgba(0, 212, 170, 0.08)',
+                                border: '1px solid rgba(0, 212, 170, 0.15)',
+                                color: 'var(--electric-teal)',
+                                fontSize: '0.75rem',
+                                fontWeight: 600,
+                            }}
+                        >
+                            🛡️ LLC · $1M Insured
+                        </span>
+                        <p style={{ color: '#475569', fontSize: '0.8rem' }}>
+                            Built with precision. Powered by AI.
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>
