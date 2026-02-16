@@ -113,7 +113,7 @@ export default function Home() {
             padding: '80px 24px',
           }}
         >
-          <div className="animate-fade-in" style={{ marginBottom: 24 }}>
+          <div className="animate-fade-in" style={{ marginBottom: 32 }}>
             <div
               style={{
                 position: 'relative',
@@ -123,20 +123,26 @@ export default function Home() {
               <div
                 style={{
                   position: 'absolute',
-                  inset: -20,
-                  background: 'radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%)',
+                  inset: -60,
+                  background: 'radial-gradient(circle, rgba(0,212,170,0.2) 0%, rgba(100,80,220,0.1) 40%, transparent 70%)',
                   borderRadius: '50%',
-                  filter: 'blur(20px)',
+                  filter: 'blur(40px)',
                   pointerEvents: 'none',
                 }}
               />
               <Image
                 src="/brand/logo-icon-dark.png"
                 alt="Skybound Solutions"
-                width={120}
-                height={120}
+                width={200}
+                height={200}
                 priority
-                style={{ position: 'relative', width: 100, height: 100 }}
+                style={{
+                  position: 'relative',
+                  width: 180,
+                  height: 180,
+                  mixBlendMode: 'screen',
+                  filter: 'brightness(1.2)',
+                }}
               />
             </div>
           </div>

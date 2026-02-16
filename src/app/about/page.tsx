@@ -46,9 +46,9 @@ export default function AboutPage() {
                         <Image
                             src="/brand/logo-icon-dark.png"
                             alt="Skybound Solutions"
-                            width={80}
-                            height={80}
-                            style={{ width: 72, height: 72 }}
+                            width={100}
+                            height={100}
+                            style={{ width: 88, height: 88, mixBlendMode: 'screen', filter: 'brightness(1.15)' }}
                         />
                     </div>
                     <div className="section-label">About Us</div>

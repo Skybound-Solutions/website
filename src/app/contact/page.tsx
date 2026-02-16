@@ -107,19 +107,17 @@ export default function ContactPage() {
                                 </p>
                                 {process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL ? (
                                     <>
-                                        <iframe
-                                            src={process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL}
-                                            style={{
-                                                border: 0,
-                                                width: '100%',
-                                                height: 500,
-                                                borderRadius: 8,
-                                                background: '#0a0a12',
-                                            }}
-                                            title="Book a Discovery Call"
-                                        />
-                                        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 8 }}>
-                                            Powered by Google Calendar
+                                        <a
+                                            href={process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-primary"
+                                            style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
+                                        >
+                                            📅 Book a Time Slot →
+                                        </a>
+                                        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 12 }}>
+                                            Opens Google Calendar — pick a time that works for you.
                                         </p>
                                     </>
                                 ) : (
