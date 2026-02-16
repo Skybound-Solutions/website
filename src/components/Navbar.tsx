@@ -59,13 +59,22 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
                     <Image
-                        src="/brand/logo-horizontal-dark.png"
-                        alt="Skybound Solutions"
-                        width={400}
-                        height={400}
+                        src="/brand/logo-icon-dark.png"
+                        alt=""
+                        width={56}
+                        height={56}
                         priority
-                        style={{ height: 56, width: 'auto' }}
+                        style={{ height: 28, width: 28 }}
                     />
+                    <span style={{
+                        fontSize: '1.15rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.08em',
+                        color: 'var(--white)',
+                        marginLeft: 10,
+                    }}>
+                        SKYBOUND
+                    </span>
                 </Link>
 
                 {/* Desktop Links */}

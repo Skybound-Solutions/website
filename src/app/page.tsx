@@ -113,21 +113,21 @@ export default function Home() {
             padding: '60px 24px',
           }}
         >
-          <div className="animate-fade-in" style={{ marginBottom: 24 }}>
+          <div className="animate-fade-in" style={{ marginBottom: 16 }}>
             <div
               style={{
                 position: 'relative',
                 display: 'inline-block',
               }}
             >
-              {/* Subtle glow behind the logo */}
+              {/* Ambient glow behind the logo */}
               <div
                 style={{
                   position: 'absolute',
-                  inset: -80,
-                  background: 'radial-gradient(circle, rgba(0,212,170,0.2) 0%, rgba(0,122,255,0.1) 35%, transparent 70%)',
+                  inset: -150,
+                  background: 'radial-gradient(circle, rgba(0,212,170,0.22) 0%, rgba(0,122,255,0.12) 30%, rgba(155,89,182,0.05) 50%, transparent 70%)',
                   borderRadius: '50%',
-                  filter: 'blur(50px)',
+                  filter: 'blur(80px)',
                   pointerEvents: 'none',
                   animation: 'pulse-glow 4s ease-in-out infinite',
                 }}
@@ -135,14 +135,14 @@ export default function Home() {
               <Image
                 src="/brand/logo-icon-dark.png"
                 alt="Skybound Solutions"
-                width={400}
-                height={400}
+                width={640}
+                height={640}
                 priority
                 className="logo-hero"
                 style={{
                   position: 'relative',
-                  width: 200,
-                  height: 200,
+                  width: 500,
+                  height: 500,
                 }}
               />
             </div>
