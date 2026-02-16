@@ -84,13 +84,38 @@ export default function Home() {
         style={{
           minHeight: '100vh',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-end',
           justifyContent: 'center',
           position: 'relative',
           overflow: 'hidden',
           paddingTop: 'var(--header-height)',
         }}
       >
+        {/* Full-bleed background image — fills entire viewport */}
+        <Image
+          src="/brand/hero-bg.png"
+          alt=""
+          fill
+          priority
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center 40%',
+            zIndex: 0,
+          }}
+        />
+
+        {/* Dark gradient overlay — keeps text legible */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(10,15,30,0.3) 0%, rgba(10,15,30,0.5) 40%, rgba(10,15,30,0.85) 75%, var(--surface) 100%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Aurora atmospheric layer on top */}
         <AuroraBackground variant="hero" />
 
         <div
@@ -100,43 +125,9 @@ export default function Home() {
             zIndex: 2,
             textAlign: 'center',
             maxWidth: 950,
-            padding: '60px 24px',
+            padding: '0 24px 80px',
           }}
         >
-          <div className="animate-fade-in" style={{ marginBottom: 16 }}>
-            <div
-              style={{
-                position: 'relative',
-                display: 'inline-block',
-              }}
-            >
-              {/* Ambient glow behind the logo */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: -150,
-                  background: 'radial-gradient(circle, rgba(0,212,170,0.22) 0%, rgba(0,122,255,0.12) 30%, rgba(155,89,182,0.05) 50%, transparent 70%)',
-                  borderRadius: '50%',
-                  filter: 'blur(80px)',
-                  pointerEvents: 'none',
-                  animation: 'pulse-glow 4s ease-in-out infinite',
-                }}
-              />
-              <Image
-                src="/brand/logo-icon-dark.png"
-                alt="Skybound Solutions"
-                width={640}
-                height={640}
-                priority
-                className="logo-hero"
-                style={{
-                  position: 'relative',
-                  width: 500,
-                  height: 500,
-                }}
-              />
-            </div>
-          </div>
           <div className="section-label animate-fade-in">
             AI-Powered Innovation
           </div>
