@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -41,6 +42,15 @@ export default function AboutPage() {
             {/* Header */}
             <section className="section" style={{ paddingBottom: 40 }}>
                 <div className="container" style={{ textAlign: 'center', maxWidth: 800 }}>
+                    <div style={{ marginBottom: 20 }}>
+                        <Image
+                            src="/brand/logo-icon-dark.png"
+                            alt="Skybound Solutions"
+                            width={80}
+                            height={80}
+                            style={{ width: 72, height: 72 }}
+                        />
+                    </div>
                     <div className="section-label">About Us</div>
                     <h1 className="heading-xl" style={{ marginBottom: 16 }}>
                         Where Experience Meets{' '}

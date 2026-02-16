@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const services = [
   {
@@ -112,6 +113,33 @@ export default function Home() {
             padding: '80px 24px',
           }}
         >
+          <div className="animate-fade-in" style={{ marginBottom: 24 }}>
+            <div
+              style={{
+                position: 'relative',
+                display: 'inline-block',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: -20,
+                  background: 'radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%)',
+                  borderRadius: '50%',
+                  filter: 'blur(20px)',
+                  pointerEvents: 'none',
+                }}
+              />
+              <Image
+                src="/brand/logo-icon-dark.png"
+                alt="Skybound Solutions"
+                width={120}
+                height={120}
+                priority
+                style={{ position: 'relative', width: 100, height: 100 }}
+              />
+            </div>
+          </div>
           <div className="section-label animate-fade-in">
             AI-Powered Innovation
           </div>

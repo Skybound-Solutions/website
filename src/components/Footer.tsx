@@ -46,11 +46,11 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div style={{ maxWidth: 300 }}>
                         <Image
-                            src="/brand/logo-horizontal-dark.png"
+                            src="/brand/logo-primary-dark.png"
                             alt="Skybound Solutions"
                             width={160}
-                            height={36}
-                            style={{ height: 32, width: 'auto', marginBottom: 16 }}
+                            height={160}
+                            style={{ width: 120, height: 'auto', marginBottom: 20 }}
                         />
                         <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6 }}>
                             AI-powered consulting and custom development for businesses ready to deploy intelligent solutions.
