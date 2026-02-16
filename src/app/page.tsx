@@ -90,18 +90,17 @@ export default function Home() {
           paddingTop: 'var(--header-height)',
         }}
       >
-        <div className="tron-grid" />
         <div
           className="aurora-glow aurora-glow-blue"
-          style={{ top: '-20%', right: '-10%', width: 500, height: 500 }}
+          style={{ top: '-15%', right: '-5%', width: 700, height: 700, opacity: 0.5, animation: 'aurora-drift-1 20s ease-in-out infinite' }}
         />
         <div
           className="aurora-glow aurora-glow-teal"
-          style={{ bottom: '-10%', left: '-5%', width: 400, height: 400, opacity: 0.2 }}
+          style={{ bottom: '-15%', left: '-10%', width: 600, height: 600, opacity: 0.35, animation: 'aurora-drift-2 25s ease-in-out infinite' }}
         />
         <div
           className="aurora-glow aurora-glow-purple"
-          style={{ top: '30%', left: '20%', width: 300, height: 300, opacity: 0.15 }}
+          style={{ top: '20%', left: '15%', width: 500, height: 500, opacity: 0.25, animation: 'aurora-drift-3 18s ease-in-out infinite' }}
         />
 
         <div
@@ -110,11 +109,11 @@ export default function Home() {
             position: 'relative',
             zIndex: 2,
             textAlign: 'center',
-            maxWidth: 900,
-            padding: '80px 24px',
+            maxWidth: 950,
+            padding: '60px 24px',
           }}
         >
-          <div className="animate-fade-in" style={{ marginBottom: 32 }}>
+          <div className="animate-fade-in" style={{ marginBottom: 24 }}>
             <div
               style={{
                 position: 'relative',
@@ -125,10 +124,10 @@ export default function Home() {
               <div
                 style={{
                   position: 'absolute',
-                  inset: -60,
-                  background: 'radial-gradient(circle, rgba(0,212,170,0.18) 0%, rgba(0,122,255,0.08) 40%, transparent 70%)',
+                  inset: -80,
+                  background: 'radial-gradient(circle, rgba(0,212,170,0.2) 0%, rgba(0,122,255,0.1) 35%, transparent 70%)',
                   borderRadius: '50%',
-                  filter: 'blur(40px)',
+                  filter: 'blur(50px)',
                   pointerEvents: 'none',
                   animation: 'pulse-glow 4s ease-in-out infinite',
                 }}
@@ -136,14 +135,14 @@ export default function Home() {
               <Image
                 src="/brand/logo-icon-dark.png"
                 alt="Skybound Solutions"
-                width={280}
-                height={280}
+                width={400}
+                height={400}
                 priority
                 className="logo-hero"
                 style={{
                   position: 'relative',
-                  width: 140,
-                  height: 140,
+                  width: 200,
+                  height: 200,
                 }}
               />
             </div>

@@ -61,10 +61,10 @@ export default function Navbar() {
                     <Image
                         src="/brand/logo-horizontal-dark.png"
                         alt="Skybound Solutions"
-                        width={260}
-                        height={56}
+                        width={400}
+                        height={400}
                         priority
-                        style={{ height: 40, width: 'auto' }}
+                        style={{ height: 56, width: 'auto' }}
                     />
                 </Link>
 
@@ -169,9 +169,9 @@ export default function Navbar() {
                 <Image
                     src="/brand/logo-icon-dark.png"
                     alt="Skybound Solutions"
-                    width={80}
-                    height={80}
-                    style={{ width: 48, height: 48, marginBottom: 16 }}
+                    width={128}
+                    height={128}
+                    style={{ width: 64, height: 64, marginBottom: 16 }}
                 />
                 {navLinks.map((link) => (
                     <Link

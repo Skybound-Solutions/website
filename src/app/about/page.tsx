@@ -46,20 +46,20 @@ export default function AboutPage() {
                         <div
                             style={{
                                 position: 'absolute',
-                                inset: -40,
-                                background: 'radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%)',
+                                inset: -60,
+                                background: 'radial-gradient(circle, rgba(0,212,170,0.18) 0%, rgba(0,122,255,0.08) 40%, transparent 70%)',
                                 borderRadius: '50%',
-                                filter: 'blur(30px)',
+                                filter: 'blur(40px)',
                                 pointerEvents: 'none',
                             }}
                         />
                         <Image
                             src="/brand/logo-icon-dark.png"
                             alt="Skybound Solutions"
-                            width={120}
-                            height={120}
+                            width={280}
+                            height={280}
                             className="logo-hero"
-                            style={{ position: 'relative', width: 100, height: 100 }}
+                            style={{ position: 'relative', width: 140, height: 140 }}
                         />
                     </div>
                     <div className="section-label">About Us</div>
