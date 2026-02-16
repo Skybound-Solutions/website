@@ -14,15 +14,32 @@ export default function AuroraBackground({ variant = 'page' }: { variant?: 'hero
             }}
             aria-hidden="true"
         >
+            {/* Central radial bloom — atmospheric spotlight behind content */}
+            <div
+                style={{
+                    position: 'absolute',
+                    top: isHero ? '35%' : '30%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: isHero ? '120%' : '100%',
+                    height: isHero ? '80%' : '70%',
+                    background: isHero
+                        ? 'radial-gradient(ellipse 50% 50% at center, rgba(0,122,255,0.12) 0%, rgba(0,212,170,0.06) 30%, transparent 70%)'
+                        : 'radial-gradient(ellipse 45% 45% at center, rgba(0,122,255,0.08) 0%, rgba(0,212,170,0.04) 30%, transparent 70%)',
+                    pointerEvents: 'none',
+                }}
+            />
+
             {/* Aurora blob - blue */}
             <div
                 className="aurora-glow aurora-glow-blue"
                 style={{
                     top: '-15%',
                     right: '-5%',
-                    width: isHero ? 700 : 500,
-                    height: isHero ? 700 : 500,
-                    opacity: isHero ? 0.5 : 0.35,
+                    width: isHero ? 800 : 550,
+                    height: isHero ? 800 : 550,
+                    opacity: isHero ? 0.45 : 0.3,
+                    filter: 'blur(150px)',
                     animation: 'aurora-drift-1 20s ease-in-out infinite',
                 }}
             />
@@ -32,9 +49,10 @@ export default function AuroraBackground({ variant = 'page' }: { variant?: 'hero
                 style={{
                     bottom: isHero ? '-15%' : '5%',
                     left: '-10%',
-                    width: isHero ? 600 : 450,
-                    height: isHero ? 600 : 450,
-                    opacity: isHero ? 0.35 : 0.25,
+                    width: isHero ? 700 : 500,
+                    height: isHero ? 700 : 500,
+                    opacity: isHero ? 0.3 : 0.2,
+                    filter: 'blur(160px)',
                     animation: 'aurora-drift-2 25s ease-in-out infinite',
                 }}
             />
@@ -44,9 +62,10 @@ export default function AuroraBackground({ variant = 'page' }: { variant?: 'hero
                 style={{
                     top: '20%',
                     left: '15%',
-                    width: isHero ? 500 : 350,
-                    height: isHero ? 500 : 350,
-                    opacity: isHero ? 0.25 : 0.18,
+                    width: isHero ? 550 : 400,
+                    height: isHero ? 550 : 400,
+                    opacity: isHero ? 0.22 : 0.15,
+                    filter: 'blur(140px)',
                     animation: 'aurora-drift-3 18s ease-in-out infinite',
                 }}
             />

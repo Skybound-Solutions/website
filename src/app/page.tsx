@@ -145,7 +145,7 @@ export default function Home() {
             className="heading-xl animate-fade-in animate-delay-1"
             style={{ whiteSpace: 'nowrap', fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
           >
-            From Idea to Production.{' '}
+            <span className="text-gradient-metallic">From Idea to Production.</span>{' '}
             <span className="text-gradient">AI-Powered.</span>
           </h1>
 
