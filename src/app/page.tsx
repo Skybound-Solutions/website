@@ -110,25 +110,25 @@ export default function Home() {
             position: 'relative',
             zIndex: 2,
             textAlign: 'center',
-            maxWidth: 850,
+            maxWidth: 900,
             padding: '80px 24px',
           }}
         >
-          <div className="animate-fade-in" style={{ marginBottom: 40 }}>
+          <div className="animate-fade-in" style={{ marginBottom: 32 }}>
             <div
               style={{
                 position: 'relative',
                 display: 'inline-block',
               }}
             >
-              {/* Multi-layer aurora glow — the logo IS the light source */}
+              {/* Subtle glow behind the logo */}
               <div
                 style={{
                   position: 'absolute',
-                  inset: -120,
-                  background: 'radial-gradient(circle, rgba(0,212,170,0.25) 0%, rgba(0,122,255,0.12) 30%, rgba(155,89,182,0.06) 50%, transparent 70%)',
+                  inset: -60,
+                  background: 'radial-gradient(circle, rgba(0,212,170,0.18) 0%, rgba(0,122,255,0.08) 40%, transparent 70%)',
                   borderRadius: '50%',
-                  filter: 'blur(60px)',
+                  filter: 'blur(40px)',
                   pointerEvents: 'none',
                   animation: 'pulse-glow 4s ease-in-out infinite',
                 }}
@@ -142,8 +142,8 @@ export default function Home() {
                 className="logo-hero"
                 style={{
                   position: 'relative',
-                  width: 240,
-                  height: 240,
+                  width: 140,
+                  height: 140,
                 }}
               />
             </div>
@@ -152,7 +152,10 @@ export default function Home() {
             AI-Powered Innovation
           </div>
 
-          <h1 className="heading-xl animate-fade-in animate-delay-1">
+          <h1
+            className="heading-xl animate-fade-in animate-delay-1"
+            style={{ whiteSpace: 'nowrap', fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
+          >
             From Idea to Production.{' '}
             <span className="text-gradient">AI-Powered.</span>
           </h1>

@@ -64,8 +64,7 @@ export default function Navbar() {
                         width={260}
                         height={56}
                         priority
-                        className="logo-nav"
-                        style={{ height: 52, width: 'auto' }}
+                        style={{ height: 40, width: 'auto' }}
                     />
                 </Link>
 
@@ -172,8 +171,7 @@ export default function Navbar() {
                     alt="Skybound Solutions"
                     width={80}
                     height={80}
-                    className="logo-blend"
-                    style={{ width: 60, height: 60, marginBottom: 16 }}
+                    style={{ width: 48, height: 48, marginBottom: 16 }}
                 />
                 {navLinks.map((link) => (
                     <Link
