@@ -47,7 +47,7 @@ const tiers = [
         id: 'maintenance',
         icon: '🛠️',
         title: 'Maintenance & Support',
-        priceHint: 'Starting at $500/month',
+        priceHint: 'Custom plans available',
         description:
             'Ongoing support, monitoring, and feature development for production systems. Choose the tier that fits your needs.',
         deliverables: null,
@@ -74,18 +74,15 @@ const tiers = [
 const maintenancePlans = [
     {
         name: 'Basic',
-        price: 'Starting at $500/mo',
-        features: ['Bug fixes & patches', 'System monitoring', 'Monthly status report', '2 business-day response'],
+        features: ['Bug fixes & patches', 'System monitoring', 'Monthly status report', 'Standard response time'],
     },
     {
         name: 'Standard',
-        price: 'Starting at $1,000/mo',
-        features: ['Everything in Basic', '5 dev hours/month', 'Performance optimization', 'Next business-day response', 'Quarterly strategy call'],
+        features: ['Everything in Basic', 'Dedicated dev hours', 'Performance optimization', 'Priority response time', 'Quarterly strategy call'],
     },
     {
         name: 'Premium',
-        price: 'Starting at $2,000/mo',
-        features: ['Everything in Standard', '15 dev hours/month', 'Priority feature requests', '4-hour response SLA', 'Monthly strategy calls', 'Dedicated Slack/Discord channel'],
+        features: ['Everything in Standard', 'Extended dev hours', 'Priority feature requests', 'Fastest response time', 'Monthly strategy calls', 'Dedicated Slack/Discord channel'],
     },
 ];
 
@@ -185,10 +182,7 @@ export default function ServicesPage() {
                                                 Most Popular
                                             </span>
                                         )}
-                                        <h4 className="heading-sm" style={{ marginBottom: 4 }}>{plan.name}</h4>
-                                        <p style={{ color: 'var(--electric-teal)', fontSize: '0.9rem', fontWeight: 600, marginBottom: 16 }}>
-                                            {plan.price}
-                                        </p>
+                                        <h4 className="heading-sm" style={{ marginBottom: 16 }}>{plan.name}</h4>
                                         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
                                             {plan.features.map((f) => (
                                                 <li

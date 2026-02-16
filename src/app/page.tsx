@@ -104,6 +104,26 @@ export default function Home() {
           }}
         />
 
+        {/* Perspective grid plane — recedes into the distance */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: '-50%',
+            width: '200%',
+            height: '65%',
+            background:
+              'repeating-linear-gradient(90deg, rgba(0,212,170,0.07) 0px, transparent 1px, transparent 80px),' +
+              'repeating-linear-gradient(0deg, rgba(0,212,170,0.07) 0px, transparent 1px, transparent 80px)',
+            transform: 'perspective(500px) rotateX(65deg)',
+            transformOrigin: 'center bottom',
+            pointerEvents: 'none',
+            zIndex: 0,
+            maskImage: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 75%)',
+            WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 75%)',
+          }}
+        />
+
         {/* Dark gradient overlay — keeps text legible */}
         <div
           style={{
