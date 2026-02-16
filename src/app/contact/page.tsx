@@ -87,9 +87,9 @@ export default function ContactPage() {
                             gap: '3rem',
                         }}
                     >
-                        {/* Booking Widget Placeholder + Form */}
+                        {/* Booking Widget + Form */}
                         <div>
-                            {/* Booking Widget — swap out for Cal.com/Calendly embed later */}
+                            {/* Google Calendar Appointment Scheduling */}
                             <div
                                 className="card card-glass"
                                 style={{
@@ -98,21 +98,43 @@ export default function ContactPage() {
                                     textAlign: 'center',
                                     background: 'rgba(0, 122, 255, 0.05)',
                                     border: '1px solid rgba(0, 122, 255, 0.15)',
+                                    overflow: 'hidden',
                                 }}
                             >
                                 <h3 className="heading-sm" style={{ marginBottom: 8 }}>📅 Schedule Directly</h3>
                                 <p className="text-sm" style={{ marginBottom: 16 }}>
                                     Prefer to skip the form? Book a free 15-minute discovery call directly.
                                 </p>
-                                <a
-                                    href="mailto:info@skyboundmi.com?subject=Discovery%20Call%20Request"
-                                    className="btn btn-primary btn-sm"
-                                >
-                                    Request a Time →
-                                </a>
-                                <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 8 }}>
-                                    Scheduling widget coming soon — for now, email us with your preferred time.
-                                </p>
+                                {process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL ? (
+                                    <>
+                                        <iframe
+                                            src={process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL}
+                                            style={{
+                                                border: 0,
+                                                width: '100%',
+                                                height: 500,
+                                                borderRadius: 8,
+                                                background: '#0a0a12',
+                                            }}
+                                            title="Book a Discovery Call"
+                                        />
+                                        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 8 }}>
+                                            Powered by Google Calendar
+                                        </p>
+                                    </>
+                                ) : (
+                                    <>
+                                        <a
+                                            href="mailto:info@skyboundmi.com?subject=Discovery%20Call%20Request"
+                                            className="btn btn-primary btn-sm"
+                                        >
+                                            Request a Time →
+                                        </a>
+                                        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 8 }}>
+                                            Email us with your preferred time and we&apos;ll confirm.
+                                        </p>
+                                    </>
+                                )}
                             </div>
 
                             {/* Contact Form */}
