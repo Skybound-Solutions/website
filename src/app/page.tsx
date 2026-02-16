@@ -58,11 +58,11 @@ const featuredProjects = [
     status: 'coming-soon',
   },
   {
-    title: 'MYIEP — iOS Educational App',
-    description: 'iOS app helping parents navigate IEP documents with AI-powered analysis. On-device processing for privacy with cloud fallback.',
-    result: 'In development',
-    tags: ['React Native', 'Apple ML', 'Cloud AI'],
-    slug: '/work/myiep',
+    title: 'Booster Club E-Commerce & POS',
+    description: 'Custom e-commerce and point-of-sale platform for a youth sports organization. Online ordering, event-day sales, inventory tracking, and automated financial reporting.',
+    result: 'Unified sales platform',
+    tags: ['Next.js', 'Stripe', 'Firebase'],
+    slug: '/work/pos-system',
     status: 'coming-soon',
   },
 ];
@@ -79,6 +79,7 @@ export default function Home() {
     <div>
       {/* ===== HERO ===== */}
       <section
+        className="section-flow"
         style={{
           minHeight: '100vh',
           display: 'flex',
@@ -113,35 +114,36 @@ export default function Home() {
             padding: '80px 24px',
           }}
         >
-          <div className="animate-fade-in" style={{ marginBottom: 32 }}>
+          <div className="animate-fade-in" style={{ marginBottom: 40 }}>
             <div
               style={{
                 position: 'relative',
                 display: 'inline-block',
               }}
             >
+              {/* Multi-layer aurora glow — the logo IS the light source */}
               <div
                 style={{
                   position: 'absolute',
-                  inset: -60,
-                  background: 'radial-gradient(circle, rgba(0,212,170,0.2) 0%, rgba(100,80,220,0.1) 40%, transparent 70%)',
+                  inset: -120,
+                  background: 'radial-gradient(circle, rgba(0,212,170,0.25) 0%, rgba(0,122,255,0.12) 30%, rgba(155,89,182,0.06) 50%, transparent 70%)',
                   borderRadius: '50%',
-                  filter: 'blur(40px)',
+                  filter: 'blur(60px)',
                   pointerEvents: 'none',
+                  animation: 'pulse-glow 4s ease-in-out infinite',
                 }}
               />
               <Image
                 src="/brand/logo-icon-dark.png"
                 alt="Skybound Solutions"
-                width={200}
-                height={200}
+                width={280}
+                height={280}
                 priority
+                className="logo-hero"
                 style={{
                   position: 'relative',
-                  width: 180,
-                  height: 180,
-                  mixBlendMode: 'screen',
-                  filter: 'brightness(1.2)',
+                  width: 240,
+                  height: 240,
                 }}
               />
             </div>
@@ -172,23 +174,13 @@ export default function Home() {
             style={{
               display: 'flex',
               justifyContent: 'center',
-              gap: 24,
+              gap: 12,
               flexWrap: 'wrap',
               marginBottom: '2.5rem',
             }}
           >
             {trustSignals.map((t) => (
-              <span
-                key={t.text}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  color: '#94a3b8',
-                  fontSize: '0.85rem',
-                  fontWeight: 500,
-                }}
-              >
+              <span key={t.text} className="trust-badge">
                 <span>{t.icon}</span> {t.text}
               </span>
             ))}

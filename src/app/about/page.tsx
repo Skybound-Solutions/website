@@ -42,13 +42,24 @@ export default function AboutPage() {
             {/* Header */}
             <section className="section" style={{ paddingBottom: 40 }}>
                 <div className="container" style={{ textAlign: 'center', maxWidth: 800 }}>
-                    <div style={{ marginBottom: 20 }}>
+                    <div style={{ marginBottom: 24, position: 'relative', display: 'inline-block' }}>
+                        <div
+                            style={{
+                                position: 'absolute',
+                                inset: -40,
+                                background: 'radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%)',
+                                borderRadius: '50%',
+                                filter: 'blur(30px)',
+                                pointerEvents: 'none',
+                            }}
+                        />
                         <Image
                             src="/brand/logo-icon-dark.png"
                             alt="Skybound Solutions"
-                            width={100}
-                            height={100}
-                            style={{ width: 88, height: 88, mixBlendMode: 'screen', filter: 'brightness(1.15)' }}
+                            width={120}
+                            height={120}
+                            className="logo-hero"
+                            style={{ position: 'relative', width: 100, height: 100 }}
                         />
                     </div>
                     <div className="section-label">About Us</div>

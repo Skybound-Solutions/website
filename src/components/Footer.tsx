@@ -48,9 +48,10 @@ export default function Footer() {
                         <Image
                             src="/brand/logo-primary-dark.png"
                             alt="Skybound Solutions"
-                            width={180}
-                            height={180}
-                            style={{ width: 140, height: 'auto', marginBottom: 20, mixBlendMode: 'screen', filter: 'brightness(1.15)' }}
+                            width={200}
+                            height={200}
+                            className="logo-footer"
+                            style={{ width: 160, height: 'auto', marginBottom: 20 }}
                         />
                         <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6 }}>
                             AI-powered consulting and custom development for businesses ready to deploy intelligent solutions.

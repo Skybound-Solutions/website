@@ -61,10 +61,11 @@ export default function Navbar() {
                     <Image
                         src="/brand/logo-horizontal-dark.png"
                         alt="Skybound Solutions"
-                        width={220}
-                        height={48}
+                        width={260}
+                        height={56}
                         priority
-                        style={{ height: 48, width: 'auto', mixBlendMode: 'screen', filter: 'brightness(1.15)' }}
+                        className="logo-nav"
+                        style={{ height: 52, width: 'auto' }}
                     />
                 </Link>
 
@@ -171,7 +172,8 @@ export default function Navbar() {
                     alt="Skybound Solutions"
                     width={80}
                     height={80}
-                    style={{ width: 72, height: 72, marginBottom: 12, mixBlendMode: 'screen', filter: 'brightness(1.15)' }}
+                    className="logo-blend"
+                    style={{ width: 60, height: 60, marginBottom: 16 }}
                 />
                 {navLinks.map((link) => (
                     <Link

@@ -91,19 +91,18 @@ export default function ContactPage() {
                         <div>
                             {/* Google Calendar Appointment Scheduling */}
                             <div
-                                className="card card-glass"
+                                className="card card-glass card-aurora"
                                 style={{
-                                    padding: '2rem',
+                                    padding: '2.5rem',
                                     marginBottom: '2rem',
                                     textAlign: 'center',
-                                    background: 'rgba(0, 122, 255, 0.05)',
-                                    border: '1px solid rgba(0, 122, 255, 0.15)',
-                                    overflow: 'hidden',
+                                    background: 'linear-gradient(135deg, rgba(0, 212, 170, 0.06) 0%, rgba(0, 122, 255, 0.06) 100%)',
+                                    border: '1px solid rgba(0, 212, 170, 0.2)',
                                 }}
                             >
-                                <h3 className="heading-sm" style={{ marginBottom: 8 }}>📅 Schedule Directly</h3>
-                                <p className="text-sm" style={{ marginBottom: 16 }}>
-                                    Prefer to skip the form? Book a free 15-minute discovery call directly.
+                                <h3 className="heading-md" style={{ marginBottom: 8 }}>📅 Schedule a Discovery Call</h3>
+                                <p className="text-base" style={{ marginBottom: 20, maxWidth: 400, margin: '0 auto 20px' }}>
+                                    No forms, no waiting. Pick a time and let&apos;s talk about your project.
                                 </p>
                                 {process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL ? (
                                     <>
@@ -111,12 +110,12 @@ export default function ContactPage() {
                                             href={process.env.NEXT_PUBLIC_GOOGLE_BOOKING_URL}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="btn btn-primary"
-                                            style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
+                                            className="btn btn-teal btn-lg"
+                                            style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}
                                         >
-                                            📅 Book a Time Slot →
+                                            📅 Book a Free 15-Min Call →
                                         </a>
-                                        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 12 }}>
+                                        <p style={{ color: '#64748b', fontSize: '0.8rem', marginTop: 14 }}>
                                             Opens Google Calendar — pick a time that works for you.
                                         </p>
                                     </>
@@ -124,11 +123,11 @@ export default function ContactPage() {
                                     <>
                                         <a
                                             href="mailto:info@skyboundmi.com?subject=Discovery%20Call%20Request"
-                                            className="btn btn-primary btn-sm"
+                                            className="btn btn-teal btn-lg"
                                         >
                                             Request a Time →
                                         </a>
-                                        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: 8 }}>
+                                        <p style={{ color: '#64748b', fontSize: '0.8rem', marginTop: 12 }}>
                                             Email us with your preferred time and we&apos;ll confirm.
                                         </p>
                                     </>

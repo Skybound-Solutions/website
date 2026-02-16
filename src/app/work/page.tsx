@@ -21,6 +21,18 @@ const projects = [
         status: 'case-study',
     },
     {
+        title: 'Booster Club E-Commerce & POS',
+        client: 'Youth Sports Organization',
+        description:
+            'Custom e-commerce and point-of-sale platform for a youth sports booster club. Handles online ordering, event-day sales, inventory tracking, and financial reporting — replacing a patchwork of spreadsheets and manual processes.',
+        challenge: 'Disorganized sales tracking across multiple fundraising events with no centralized inventory or reporting.',
+        solution: 'Next.js application with Stripe payment integration, real-time inventory management, and automated financial reports.',
+        results: ['Unified sales platform', 'Real-time inventory', 'Automated reporting'],
+        tags: ['Next.js', 'Stripe', 'Firebase', 'TypeScript'],
+        slug: 'pos-system',
+        status: 'coming-soon',
+    },
+    {
         title: 'Proxle',
         client: 'Skybound Product',
         description:
@@ -30,30 +42,6 @@ const projects = [
         results: ['Live on web', 'AI hint engine', 'Reusable AI integration patterns'],
         tags: ['React', 'Gemini API', 'Game Design', 'TypeScript'],
         slug: 'proxle',
-        status: 'coming-soon',
-    },
-    {
-        title: 'MYIEP',
-        client: 'Skybound Product',
-        description:
-            'iOS app helping parents navigate Individualized Education Program (IEP) documents. Upload complex IEP PDFs and get AI-powered analysis, plain-language summaries, and actionable insights for parent-teacher conferences.',
-        challenge: 'IEP documents are dense, legal, and overwhelming for parents trying to advocate for their children.',
-        solution: 'React Native iOS app with on-device AI preprocessing for privacy, cloud AI for deep analysis, and a clean interface that makes IEP data accessible.',
-        results: ['In development', 'On-device AI for privacy', 'App Store submission planned'],
-        tags: ['React Native', 'Apple Foundation Models', 'Cloud AI', 'iOS'],
-        slug: 'myiep',
-        status: 'coming-soon',
-    },
-    {
-        title: 'Point-of-Sale System',
-        client: 'Youth Sports Organization',
-        description:
-            'Custom e-commerce and point-of-sale platform for a youth sports booster club. Handles online ordering, event-day sales, inventory tracking, and financial reporting — replacing a patchwork of spreadsheets and manual processes.',
-        challenge: 'Disorganized sales tracking across multiple fundraising events with no centralized inventory or reporting.',
-        solution: 'Next.js application with Stripe payment integration, real-time inventory management, and automated financial reports.',
-        results: ['Unified sales platform', 'Real-time inventory', 'Automated reporting'],
-        tags: ['Next.js', 'Stripe', 'Firebase', 'TypeScript'],
-        slug: 'pos-system',
         status: 'coming-soon',
     },
 ];
