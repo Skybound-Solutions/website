@@ -243,6 +243,72 @@ export default function SchoolPOSPage() {
                 </div>
             </section>
 
+            {/* ===== SCREENSHOTS ===== */}
+            <section className="section">
+                <div className="container">
+                    <div className="section-header">
+                        <div className="section-label">See It In Action</div>
+                        <h2 className="heading-lg">Real App. Real Events.</h2>
+                        <p className="text-lg">
+                            These screenshots are from a live Peck Pirates weightlifting concession stand on Feb 18, 2026.
+                        </p>
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: 20,
+                            overflowX: 'auto',
+                            paddingBottom: 16,
+                            scrollSnapType: 'x mandatory',
+                            WebkitOverflowScrolling: 'touch',
+                        }}
+                    >
+                        {[
+                            { src: '/school-pos-ss-menu.png', caption: 'Product Menu — tap any item to add to cart' },
+                            { src: '/school-pos-ss-payment.png', caption: 'Payment Successful — card charged in seconds' },
+                            { src: '/school-pos-ss-receipt.png', caption: 'Digital Receipt — customer scans QR code' },
+                            { src: '/school-pos-ss-transactions.png', caption: 'Transaction Log — all sales tracked in real time' },
+                            { src: '/school-pos-ss-transaction-detail.png', caption: 'Transaction Detail — itemized with void & refund options' },
+                        ].map((shot) => (
+                            <div
+                                key={shot.src}
+                                style={{
+                                    flex: '0 0 auto',
+                                    width: 'clamp(260px, 45vw, 480px)',
+                                    scrollSnapAlign: 'start',
+                                    borderRadius: 16,
+                                    overflow: 'hidden',
+                                    border: '1px solid rgba(255,255,255,0.08)',
+                                    background: 'var(--surface)',
+                                }}
+                            >
+                                <Image
+                                    src={shot.src}
+                                    alt={shot.caption}
+                                    width={960}
+                                    height={720}
+                                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                                />
+                                <p
+                                    style={{
+                                        padding: '12px 16px',
+                                        fontSize: '0.82rem',
+                                        color: '#94a3b8',
+                                        margin: 0,
+                                        borderTop: '1px solid rgba(255,255,255,0.06)',
+                                    }}
+                                >
+                                    {shot.caption}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                    <p style={{ textAlign: 'center', color: '#475569', fontSize: '0.8rem', marginTop: 8 }}>
+                        ← Scroll to see all screens
+                    </p>
+                </div>
+            </section>
+
             {/* ===== PRICING ===== */}
             <section id="pricing" className="section">
                 <div className="container" style={{ maxWidth: 900 }}>
