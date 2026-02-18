@@ -29,7 +29,7 @@ const steps = [
 
 const comparisonData = [
     { feature: 'Annual Cost', us: '$299/yr', boosterhub: '$500+/yr', square: '$0 + fees', zeffy: '$0 + tips', cashbox: '$0' },
-    { feature: 'Processing Fees', us: '2.2% + $0.10', boosterhub: '2.9% + $0.30', square: '2.6% + $0.10', zeffy: '0% (tip model)', cashbox: 'N/A' },
+    { feature: 'Processing Fees', us: '2.7% + $0.05', boosterhub: '2.9% + $0.30', square: '2.6% + $0.10', zeffy: '0% (tip model)', cashbox: 'N/A' },
     { feature: 'School-Specific Design', us: '✅', boosterhub: '⚠️ Partial', square: '❌', zeffy: '❌', cashbox: '❌' },
     { feature: 'Event Tracking', us: '✅', boosterhub: '⚠️ Limited', square: '❌', zeffy: '❌', cashbox: '❌' },
     { feature: 'Offline Mode', us: '✅', boosterhub: '❌', square: '✅', zeffy: '❌', cashbox: '✅' },
@@ -368,10 +368,10 @@ export default function SchoolPOSPage() {
                                 />
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <span style={{ color: '#94a3b8' }}>Processing fee</span>
-                                    <span style={{ color: 'var(--white)', fontWeight: 600 }}>2.2% + $0.10</span>
+                                    <span style={{ color: 'var(--white)', fontWeight: 600 }}>2.7% + $0.05</span>
                                 </div>
                                 <p style={{ color: '#64748b', fontSize: '0.8rem', marginTop: 4 }}>
-                                    Stripe nonprofit rate • funds go directly to your account
+                                    Stripe rate • funds go directly to your account
                                 </p>
                             </div>
                         </div>
@@ -399,7 +399,7 @@ export default function SchoolPOSPage() {
                                 />
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <span style={{ color: '#94a3b8' }}>Processing fee</span>
-                                    <span style={{ color: 'var(--white)', fontWeight: 600 }}>2.2% + $0.10</span>
+                                    <span style={{ color: 'var(--white)', fontWeight: 600 }}>2.7% + $0.05</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <span style={{ color: '#94a3b8' }}>Optional annual support</span>
